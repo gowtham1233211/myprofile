@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #84a6e9;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: #130b0b;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Profile section with animated background */
+        .profile-section {
+            position: relative;
+            padding: 3rem 0;
+            text-align: center;
+            background: linear-gradient(270deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
+            background-size: 800% 800%;
+            animation: gradientAnimation 10s ease infinite;
+            color: #e2dede;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-content {
+            background-color: #ecb41a;
+            padding: 2rem;
+            margin: 1rem;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(241, 239, 239, 0.2);
+            text-align: justify;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .download-button {
+            background-color: #333;
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .download-button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #333;
+            color: #fff;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <h1>GOWTHAM A</h1>
+            <p>Computer Science Student</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#profile">Profile</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#resume">Resume</a></li>
+        </ul>
+    </nav>
+
+    <!-- Profile Section with Animated Background -->
+    <section id="profile" class="profile-section">
+        <img src="C:\Users\Admin\Desktop\gowtham\1000316772.jpg" alt="Your Profile Picture" class="profile-picture">
+        <h2>Welcome to My Portfolio</h2>
+        <p>Passionate  web developer </p>
+    </section>
+
+    <section id="about" class="section-content">
+        <h2>About Me</h2>
+        <p>I'm a <b>web development</b> expert who is passionate about creating dynamic and user-friendly websites.
+            I'm driven by the desire to craft high-performance web applications that enhance user experience and
+            provide seamless digital solutions.  I'm dedicated to staying
+            up to date with the latest trends and innovations in the web development landscape. </p>
+    </section>
+
+    <section id="education" class="section-content">
+        <h2>Education</h2>
+        <p>suguna college of arts and science- Bsc cs</p>
+        <p>2023-2026</p>
+    </section>
+
+    <section id="skills" class="section-content">
+        <h2>Skills</h2>
+        <ul>
+            <li>c</li>
+            <li>Java</li>
+            <li>C++</li>
+            <li>Linux</li>
+        </ul>
+    </section>
+
+    
+
+    <section id="resume" class="section-content">
+        <center>
+            <h2>Resume</h2>
+            <a href="gowtham.pdf" download="_blank" class="download-button">Download CV</a>
+        </center>
+    </section>
+
+    <footer>
+        <p>&copy; 2025  GOWTHAM  A</p>
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        // Animate sections on scroll
+        const sections = document.querySelectorAll('.section-content');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Optional: Smooth scrolling to section on navigation click
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>
